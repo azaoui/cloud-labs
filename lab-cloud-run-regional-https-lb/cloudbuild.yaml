@@ -1,0 +1,8 @@
+﻿steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'europe-west1-docker.pkg.dev/YOUR_PROJECT_ID/lab-registry/api-simple:v1', '.']
+images:
+  - 'europe-west1-docker.pkg.dev/YOUR_PROJECT_ID/lab-registry/api-simple:v1'
+options:
+  logging: CLOUD_LOGGING_ONLY
+

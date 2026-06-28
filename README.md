@@ -11,6 +11,7 @@ Each lab is a self-contained guide covering a real-world scenario — architectu
 | # | Lab | Stack | Description |
 |---|-----|-------|-------------|
 | 01 | [Cloud Run behind a Regional HTTPS Load Balancer](./lab-cloud-run-regional-https-lb/) | GCP · Cloud Run · Certificate Manager | Expose a containerized API via an external regional HTTPS LB with a custom domain and auto-managed SSL certificate |
+| 02 | [GKE Spot vs On-Demand Isolation](./lab-gke-finops-spot-isolation/) | GCP · GKE · Terraform · FinOps | Minimal GKE Standard demo with a dedicated VPC, separate on-demand and Spot node pools, and namespace-based workload placement |
 
 ---
 
@@ -18,8 +19,19 @@ Each lab is a self-contained guide covering a real-world scenario — architectu
 
 ```
 cloud-labs/
-└── lab-<topic>/
-    └── README.md   # full lab guide (architecture, commands, pitfalls, cleanup)
+├── README.md
+├── lab-cloud-run-regional-https-lb/
+│   ├── README.md
+│   ├── app-storage-reader.yaml
+│   ├── app.py
+│   ├── cloudbuild.yaml
+│   ├── Dockerfile
+│   ├── ksa-storage-reader.yaml
+│   └── requirements.txt
+├── lab-gke-finops-spot-isolation/
+│   ├── main.tf
+│   ├── variables.tf
+│   └── outputs.tf
 ```
 
 ---

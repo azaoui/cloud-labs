@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-storage-reader
+  namespace: mon-namespace
+spec:
+  serviceAccountName: ksa-storage-reader
+  containers:
+    - name: app
+      image: mon-app:latest

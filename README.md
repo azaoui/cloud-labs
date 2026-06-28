@@ -29,9 +29,14 @@ cloud-labs/
 │   ├── ksa-storage-reader.yaml
 │   └── requirements.txt
 ├── lab-gke-finops-spot-isolation/
-│   ├── main.tf
-│   ├── variables.tf
-│   └── outputs.tf
+│   ├── infra/
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   └── outputs.tf
+│   ├── kube/
+│   │   ├── job-processing-deployment.yaml
+│   │   ├── namespaces.yaml
+│   │   └── production-deployment.yaml
 ```
 
 ---

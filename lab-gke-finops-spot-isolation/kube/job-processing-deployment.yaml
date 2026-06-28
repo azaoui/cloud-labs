@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: batch-app
+  namespace: job-processing
+  labels:
+    app: batch-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: batch-app
+  template:
+    metadata:
+      labels:
+        app: batch-app
+    spec:
+      # 1. Forcer le placement sur les noeuds Spot (Node Affinity)
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: cloud.google.com/gke-spot
+                    operator: In
+                    values:
+                      - "true"
+
+      # 2. Autoriser le pod a tolerer le Taint des noeuds Spot
+      tolerations:
+        - key: cloud.google.com/gke-spot
+          operator: Equal
+          value: "true"
+          effect: NoSchedule
+
+      containers:
+        - name: worker
+          image: busybox:1.36
+          command: ["/bin/sh", "-c", "sleep 3600"]
+          resources:
+            requests:
+              cpu: 50m
+              memory: 32Mi
+            limits:
+              cpu: 50m
+              memory: 32Mi
